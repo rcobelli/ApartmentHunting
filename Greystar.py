@@ -1,3 +1,4 @@
+from datetime import datetime
 from bs4 import BeautifulSoup
 from Apartment import Apartment
 from Option import Option
@@ -26,7 +27,7 @@ class Greystar(Apartment):
             sqFt = int(apt.find("p", {"class": "floorplan-listing__info"}).text.split(" | ")[2].split()[0].replace(",", ""))
             beds = apt.find("p", {"class": "floorplan-listing__info"}).text.split(" | ")[0]
             term = "15 mo. lease"
-            date = "TBD"
+            date = datetime.today()
             id = apt.find("p", {"class": "floorplan-listing__title"}).text
 
             output.append(Option(building, id, price, date, sqFt, beds, "", term))
