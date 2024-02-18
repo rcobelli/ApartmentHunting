@@ -40,8 +40,22 @@ class Bozzuto(Apartment):
                 price = apt.find("td", {"class": "td-card-rent"}).text.split(" to ")[0].replace("Rent:", "")
                 id = apt.find("td", {"class": "td-card-name"}).text.replace("Apartment:", "")
 
+                amenities = apt.find("td", {"class": "td-card-details"})
+                details = ""
 
-                output.append(Option(building, id, price, date, sqFt, beds, "", term))
+                if amenities is not None:
+                    if "Classic" in amenities.text:
+                        details += "Classic "
+                    elif "Standard" in amenities.text:
+                        details += "Standard "
+                    elif "Premium" in amenities.text:
+                        details += "Premium "
+
+                    if "Sunroom" in amenities.text:
+                        details += "w/ sunroom"
+
+
+                output.append(Option(building, id, price, date, sqFt, beds, details, term))
 
         return output
     
