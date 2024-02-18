@@ -69,3 +69,7 @@ class Oak1800(Equity):
 class ThePrime(Equity):
     def getPrice(self):
         return super().parseWebsite("https://www.equityapartments.com/arlington/courthouse/the-prime-at-arlington-courthouse-apartments", "The Prime")
+    
+class ReserveAtClarendon(Equity):
+    def getPrice(self):
+        return super().parseWebsite("https://www.equityapartments.com/arlington/clarendon/the-reserve-at-clarendon-centre-apartments", "Reserve at Clarendon")

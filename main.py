@@ -28,6 +28,7 @@ apartments = [
     LibertyTower(), 
     Oak1800(), 
     ThePrime(), 
+    ReserveAtClarendon(),
     Commodore(), 
     GarfieldPark(),
     MeridianCourthouse(), 
