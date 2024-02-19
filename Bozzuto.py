@@ -19,12 +19,11 @@ class Bozzuto(Apartment):
         floorplans = soup.find_all("div", {"class": "floorplan-section"})
 
         output = []
-        bedsPattern = re.compile(r'\d Bedroom')
         date = "TBD"
         term = "TBD"
 
         for floorplan in floorplans:
-            beds = re.findall(bedsPattern, floorplan.find("div", {"class": "col-lg-8"}).text)[0].split()[0]
+            beds = floorplan.find("div", {"class": "col-lg-8"}).text.split("\n")[2].split("|")[0].split()[0]
 
             apts = floorplan.find_all("tr", {"class": "unit-container"})
             for apt in apts:
@@ -70,3 +69,7 @@ class BeaconClarendon(Bozzuto):
 class RosslynHeights(Bozzuto):
     def getPrice(self):
         return super().parseWebsite("https://www.rosslynheights.com/availableunits", "Rosslyn Heights")
+    
+class Nineteen19(Bozzuto):
+    def getPrice(self):
+        return super().parseWebsite("https://www.19nineteenclarendon.com/availableunits", "19 Nineteen")

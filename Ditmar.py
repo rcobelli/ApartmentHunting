@@ -32,7 +32,7 @@ class Ditmar(Apartment):
             beds = apt.find("div", {"class": "bed-bath"}).find("span", {"class": "fp-col-text"}).text.split()[0]
             term = "12 mo. lease"
             withDen = "with den" if ("DEN" in apt.find("a", {"class": "fp-name-link"}).text) else ""
-            price = apt.find("div", {"class": "rent"}).text.replace("Rent", "").replace("From", "").replace("/month", "")
+            price = apt.find("div", {"class": "rent"}).text.replace("Rent", "").replace("From", "").replace("/month", "").replace("Starting from", "")
             id = apt.find("a", {"class": "fp-name-link"}).text.replace("(30-DAY STAY AVAILABLE)", "").replace("(30-day stay available)", "").replace("(30-Day Stay Available)", "")
 
             if "FURNISHED" in id:
@@ -73,3 +73,7 @@ class VirginiaSquarePlaza(Ditmar):
 class VirginiaSquareTowers(Ditmar):
     def getPrice(self):
         return super().parseWebsite("https://www.rentvst.com/arlington-valuxuryapartments/virginia-square-towers/conventional/", "Virginia Square Towers")
+    
+class TheEarl(Ditmar):
+    def getPrice(self):
+        return super().parseWebsite("https://theearl.prospectportal.com/arlington/the-earl/", "The Earl")
