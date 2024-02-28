@@ -43,7 +43,7 @@ class AvalonCourthousePlace(Avalon):
         for apt in apts:
             price = apt.find("span", {"class": "unit-price"}).text
             id = apt.find("div", {"class": "ant-card-meta-title"}).text.replace("Avalon Courthouse Place", "").replace("Apt. ", "")
-            date = datetime.strptime(apt.find("div", {"class": "available-date"}).text, '%b %d').replace(year=2024)
+            date = datetime.strptime(apt.find("div", {"class": "available-date"}).text + " 2024", '%b %d %Y')
             package = apt.find("span", {"class": "finish-package-label"}).text
             term = apt.find("span", {"class": "term-length"}).text.replace("/ ", "")
             beds = apt.find("div", {"class": "description"}).text.split(" • ")[0].split()[0]
@@ -67,7 +67,7 @@ class AvalonClarendon(Avalon):
         for apt in apts:
             price = apt.find("span", {"class": "unit-price"}).text
             id = apt.find("div", {"class": "ant-card-meta-title"}).text.replace("Avalon Clarendon", "")
-            date = datetime.strptime(apt.find("div", {"class": "available-date"}).text, '%b %d').replace(year=2024)
+            date = datetime.strptime(apt.find("div", {"class": "available-date"}).text + " 2024", '%b %d %Y')
             term = apt.find("span", {"class": "term-length"}).text.replace("/ ", "")
             beds = apt.find("div", {"class": "description"}).text.split(" • ")[0].split()[0]
             sqFt = int(apt.find("div", {"class": "description"}).text.split(" • ")[2].split()[0])
@@ -90,7 +90,7 @@ class AvalonBallstonSquare(Avalon):
         for apt in apts:
             price = apt.find("span", {"class": "unit-price"}).text
             id = apt.find("div", {"class": "ant-card-meta-title"}).text.replace("AVA Ballston Square", "")
-            date = datetime.strptime(apt.find("div", {"class": "available-date"}).text, '%b %d').replace(year=2024)
+            date = datetime.strptime(apt.find("div", {"class": "available-date"}).text + " 2024", '%b %d %Y')
             term = apt.find("span", {"class": "term-length"}).text.replace("/ ", "")
             beds = apt.find("div", {"class": "description"}).text.split(" • ")[0].split()[0]
             sqFt = int(apt.find("div", {"class": "description"}).text.split(" • ")[2].split()[0])
